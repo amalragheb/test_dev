@@ -27,7 +27,7 @@ int is_chain(info_t *info, char *buf, size_t *p)
 	else if (buf[j] == ';') /* found end of this command */
 	{
 		buf[j] = 0; /* replace semicolon with null */
-		info->cmd_buf_type = CMD_CHAIN;
+		info->cmd_buf_type = 3;
 	}
 	else
 		return (0);
@@ -114,16 +114,16 @@ int replace_vars(info_t *info)
 		if (info->argv[i][0] != '$' || !info->argv[i][1])
 			continue;
 
-		if (!_strcmp(info->argv[i], "$?"))
+		if (!strcmp(info->argv[i], "$?"))
 		{
 			replace_string(&(info->argv[i]),
-				_strdup(convert_number(info->status, 10, 0)));
+				_strdup(convert_number(info->status, 10)));
 			continue;
 		}
-		if (!_strcmp(info->argv[i], "$$"))
+		if (!strcmp(info->argv[i], "$$"))
 		{
 			replace_string(&(info->argv[i]),
-				_strdup(convert_number(getpid(), 10, 0)));
+				_strdup(convert_number(getpid(), 10)));
 			continue;
 		}
 		node = node_starts_with(info->env, &info->argv[i][1], '=');

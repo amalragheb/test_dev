@@ -12,7 +12,7 @@ int _erratoi(char *s)
 	unsigned long int result = 0;
 
 	if (*s == '+')
-		s++;  /* TODO: why does this make main return 255? */
+		s++;
 	for (i = 0;  s[i] != '\0'; i++)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
@@ -37,30 +37,27 @@ int _erratoi(char *s)
  */
 void print_error(info_t *info, char *estr)
 {
-	_eputs(info->fname);
-	_eputs(": ");
-	print_d(info->line_count, STDERR_FILENO);
-	_eputs(": ");
-	_eputs(info->argv[0]);
-	_eputs(": ");
-	_eputs(estr);
+	_puts(info->fname);
+	_puts(": ");
+	print_d(info->line_count);
+	_puts(": ");
+	_puts(info->argv[0]);
+	_puts(": ");
+	_puts(estr);
 }
 
 /**
  * print_d - function prints a decimal (integer) number (base 10)
  * @input: the input
- * @fd: the filedescriptor to write to
  *
  * Return: number of characters printed
  */
-int print_d(int input, int fd)
+int print_d(int input)
 {
 	int (*__putchar)(char) = _putchar;
 	int i, count = 0;
 	unsigned int _abs_, current;
 
-	if (fd == STDERR_FILENO)
-		__putchar = _eputchar;
 	if (input < 0)
 	{
 		_abs_ = -input;
@@ -93,7 +90,7 @@ int print_d(int input, int fd)
  *
  * Return: string
  */
-char *convert_number(long int num, int base, int flags)
+char *convert_number(long int num, int base)
 {
 	static char *array;
 	static char buffer[50];
@@ -101,13 +98,13 @@ char *convert_number(long int num, int base, int flags)
 	char *ptr;
 	unsigned long n = num;
 
-	if (!(flags & CONVERT_UNSIGNED) && num < 0)
+	if (num < 0)
 	{
 		n = -num;
 		sign = '-';
 
 	}
-	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
+	array = "0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
 

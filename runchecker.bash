@@ -13,7 +13,7 @@ target_directory="$1"
 while read -r command; do
     directory=$(echo "$command" | awk '{print $NF}' | cut -d'/' -f3)
     
-    if [[ -n "$target_directory" && "$directory" != "$target_directory"* ]]; then
+    if [[ -n "$target_directory" && "$directory" != "$target_directory."* ]]; then
         continue
     fi
     
