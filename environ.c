@@ -8,7 +8,15 @@
  */
 int _myenv(info_t *info)
 {
-	print_list_str(info->env);
+    list_t *h = info->env;
+
+	while (h)
+	{
+		_puts(h->str ? h->str : "(nil)");
+		_puts("\n");
+		h = h->next;
+	}
+    
 	return (0);
 }
 

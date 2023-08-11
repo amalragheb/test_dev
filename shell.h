@@ -152,13 +152,11 @@ char **get_environ(info_t *);
 
 /* toem_lists.c */
 list_t *add_node_end(list_t **, const char *, int);
-size_t print_list_str(const list_t *);
 void free_list(list_t **);
 
 /* toem_lists1.c */
 size_t list_len(const list_t *);
 char **list_to_strings(list_t *);
-size_t print_list(const list_t *);
 list_t *node_starts_with(list_t *, char *, char);
 
 /* toem_vars.c */

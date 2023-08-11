@@ -2,58 +2,58 @@
 
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/bin_ls.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/bin_ls_3_times.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/bin_ls_spaces.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/empty_input_large.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/empty_input_medium.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/empty_input_small.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/1.Simple_shell_0.1/ls_in_current_dir.bash
-OK
+[0;32mOK
 
 #####   2.SIMPLE_SHELL_0.2   #####
 
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/2.Simple_shell_0.2/bin_ls_1_arg.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/2.Simple_shell_0.2/bin_ls_1_arg_1.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/2.Simple_shell_0.2/echo_1_arg.bash
-OK
+[0;32mOK
 
 #####   3.SIMPLE_SHELL_0.3   #####
 
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_1_arg_1.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_3_times.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_empty_path.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_medium_input.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/bin_ls_spaces.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/empty_path_failing_cmd.bash
 (command)[echo "hbtn_cmd" | ./hsh]
@@ -136,7 +136,7 @@ OLDPWD=/home/shabayek/dev/alx/shells/tests
 _=/usr/bin/env
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/env_ignore_bin_ls.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/env_ignore_ls.bash
 (command)[echo "ls" | ./hsh]
@@ -156,13 +156,13 @@ Environment:
 _=/usr/bin/env
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_1_arg.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_dot_ls.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_empty_path.bash
 (command)[echo "ls" | ./hsh]
@@ -245,43 +245,43 @@ OLDPWD=/home/shabayek/dev/alx/shells/tests
 _=/usr/bin/env
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_current_dir.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_parent_dir.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_two_parent_dir.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_two_parent_dir_2.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_in_two_parent_dir_3.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_path_bin_first.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_path_bin_last.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_path_bin_middle.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_path_no_bin.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/ls_spaces.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/mix_ls_bin_ls.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/mix_ls_bin_ls_spaces.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/path_current_dir_ls.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/3.Simple_shell_0.3/path_path1_var.bash
 (command)[echo "hbtn_ls" | ./hsh]
@@ -473,10 +473,10 @@ _=/usr/bin/env
 
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/4.Simple_shell_0.4/exit_no_arg.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/4.Simple_shell_0.4/exit_no_arg_1.bash
-OK
+[0;32mOK
 
 #####   5.SIMPLE_SHELL_1.0   #####
 
@@ -689,7 +689,7 @@ OLDPWD=/home/shabayek/dev/alx/shells/tests
 _=/usr/bin/env
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/5.Simple_shell_1.0/env_ignore_env.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/5.Simple_shell_1.0/env_one_var.bash
 (command)[echo "env" | ./hsh]
@@ -716,25 +716,25 @@ _=/usr/bin/env
 
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/6.Simple_shell_0.1.1/bin_ls.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/6.Simple_shell_0.1.1/bin_ls_large_input.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/6.Simple_shell_0.1.1/bin_ls_medium_input.bash
-OK
+[0;32mOK
 
 #####   7.SIMPLE_SHELL_0.2.1   #####
 
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/7.Simple_shell_0.2.1/bin_ls.bash
-OK
+[0;32mOK
 
 #####   8.SIMPLE_SHELL_0.4.1   #####
 
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/8.Simple_shell_0.4.1/exit_1000.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/8.Simple_shell_0.4.1/exit_neg_number.bash
 (command)[echo "exit -98" | ./hsh]
@@ -818,10 +818,10 @@ OLDPWD=/home/shabayek/dev/alx/shells/tests
 _=/usr/bin/env
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/8.Simple_shell_0.4.1/exit_no_arg.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/8.Simple_shell_0.4.1/exit_no_arg_1.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/8.Simple_shell_0.4.1/exit_string.bash
 (command)[echo "exit HBTN" | ./hsh]
@@ -905,7 +905,7 @@ OLDPWD=/home/shabayek/dev/alx/shells/tests
 _=/usr/bin/env
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/8.Simple_shell_0.4.1/exit_with_status.bash
-OK
+[0;32mOK
 
 #####   9.SETENV,_UNSETENV   #####
 
@@ -2982,19 +2982,19 @@ OLDPWD=/home/shabayek/dev/alx/shells/tests
 _=/usr/bin/env
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/10.cd/cd_dash_change_oldpwd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/10.cd/cd_dash_rm_oldpwd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/10.cd/cd_no_arg.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/10.cd/cd_no_arg_change_home.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/10.cd/cd_no_arg_rm_home.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/10.cd/cd_no_permission.bash
 (command)[echo "cd /root
@@ -3081,7 +3081,7 @@ OLDPWD=/home/shabayek/dev/alx/shells/tests
 _=/usr/bin/env
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/10.cd/cd_normal.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/10.cd/cd_not_existing_dir.bash
 (command)[echo "cd /hbtn
@@ -3171,82 +3171,82 @@ _=/usr/bin/env
 
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/11.rename/cmd_sep.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/11.rename/cmd_sep_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/11.rename/cmd_sep_cmd_no_space.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/11.rename/cmd_sep_cmd_sep_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/11.rename/cmdfail_sep_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/11.rename/cmdfail_sep_cmdfail.bash
-OK
+[0;32mOK
 
 #####   12.AND_OR   #####
 
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmd_and_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmd_and_cmd_and_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmd_and_cmd_and_cmdfail.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmd_and_cmd_no_space.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmd_and_cmdfail.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmd_and_cmdfail_and_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmd_and_cmdfail_or_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmd_or_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmd_or_cmd_or_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmd_or_cmdfail.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmd_or_cmdfail_or_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmdfail_and_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmdfail_and_cmd_and_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmdfail_or_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmdfail_or_cmd_and_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmdfail_or_cmd_no_space.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmdfail_or_cmd_or_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmdfail_or_cmdfail.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/12.AND_OR/cmdfail_or_cmdfail_or_cmdfail.bash
-OK
+[0;32mOK
 
 #####   13.ALIAS   #####
 
@@ -3959,55 +3959,55 @@ _=/usr/bin/env
 
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/14.Variables/echo_as_var.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/14.Variables/echo_pid.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/14.Variables/echo_pid_fake.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/14.Variables/echo_status.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/14.Variables/echo_status_fail.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/14.Variables/echo_unknown_var.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/14.Variables/echo_var.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/14.Variables/ls_var.bash
-OK
+[0;32mOK
 
 #####   15.COMMENTS   #####
 
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/15.Comments/comment.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/15.Comments/comment_after_cmd.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/15.Comments/comment_after_cmd_print.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/15.Comments/comment_after_cmd_print_no_space.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/15.Comments/comment_after_cmd_print_space.bash
-OK
+[0;32mOK
 
 #####   16.FILE_AS_INPUT   #####
 
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/16.File_as_input/shell_with_empty_file.bash
-OK
+[0;32mOK
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/16.File_as_input/shell_with_file.bash
-(command)[./hsh /tmp/hbtn_checker_tmp_848]
+(command)[./hsh /tmp/hbtn_checker_tmp_18520]
 
 [GOT]:
 (stdout)[](Length: 0)
@@ -4087,7 +4087,7 @@ OLDPWD=/home/shabayek/dev/alx/shells/tests
 _=/usr/bin/env
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/16.File_as_input/shell_with_file_1.bash
-(command)[./hsh /tmp/hbtn_checker_tmp_4024]
+(command)[./hsh /tmp/hbtn_checker_tmp_807]
 
 [GOT]:
 (stdout)[](Length: 0)
@@ -4266,7 +4266,7 @@ OLDPWD=/home/shabayek/dev/alx/shells/tests
 _=/usr/bin/env
 
 ./TEST_SUITE/checker.bash ./hsh ./TEST_SUITE/16.File_as_input/shell_with_unknown_file.bash
-(command)[./hsh /tmp/hbtn_checker_tmp_21337]
+(command)[./hsh /tmp/hbtn_checker_tmp_25323]
 
 [GOT]:
 (stdout)[](Length: 0)
@@ -4275,7 +4275,7 @@ _=/usr/bin/env
 
 [EXPECTED]:
 (stdout)[](Length: 0)
-(stderr)[./hsh: 0: cannot open /tmp/hbtn_checker_tmp_21337: No such file
+(stderr)[./hsh: 0: cannot open /tmp/hbtn_checker_tmp_25323: No such file
 ](Length: 64)
 (status)[2]
 
