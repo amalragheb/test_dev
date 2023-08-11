@@ -11,22 +11,21 @@
  */
 int find_builtin(info_t *info)
 {
-	int i, built_in_ret = -1;
-	builtin_table builtintbl[] = {
-		{"exit", _myexit},
-		{"env", _myenv},
-		{"cd", _mycd},
-		{NULL, NULL}
-	};
+    int i, built_in_ret = -1;
+    builtin_t builtintbl[] = {
+        {"exit", _myexit},
+        {"env", _myenv},
+        {"cd", _mycd},
+        {NULL, NULL}};
 
-	for (i = 0; builtintbl[i].type; i++)
-		if (strcmp(info->argv[0], builtintbl[i].type) == 0)
-		{
-			info->line_count++;
-			built_in_ret = builtintbl[i].func(info);
-			break;
-		}
-	return (built_in_ret);
+    for (i = 0; builtintbl[i].type; i++)
+        if (strcmp(info->argv[0], builtintbl[i].type) == 0)
+        {
+            info->line_count++;
+            built_in_ret = builtintbl[i].func(info);
+            break;
+        }
+    return (built_in_ret);
 }
 
 /**
@@ -42,7 +41,7 @@ int _myexit(info_t *info)
 
     if (info->argv[1]) /* If there is an exit arguement */
     {
-        exitcheck = _erratoi(info->argv[1]);
+        exitcheck = _atoi(info->argv[1]);
         if (exitcheck == -1)
         {
             info->status = 2;
@@ -51,7 +50,7 @@ int _myexit(info_t *info)
             _putchar('\n');
             return (1);
         }
-        info->err_num = _erratoi(info->argv[1]);
+        info->err_num = _atoi(info->argv[1]);
         return (-2);
     }
     info->err_num = -1;

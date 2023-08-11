@@ -82,7 +82,7 @@ typedef struct builtin
 {
     char *type;
     int (*func)(info_t *);
-} builtin_table;
+} builtin_t;
 
 /* toem_shloop.c */
 int find_builtin(info_t *);
@@ -120,7 +120,7 @@ int bfree(void **);
 int is_delim(char, char *);
 
 /* toem_errors1.c */
-int _erratoi(char *);
+int _atoi(char *);
 void print_error(info_t *, char *);
 int print_d(int);
 char *convert_number(long int, int);
