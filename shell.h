@@ -59,7 +59,6 @@ typedef struct passinfo
     char *arg;
     char **argv;
     char *path;
-    int argc;
     unsigned int line_count;
     int err_num;
     int linecount_flag;
@@ -72,7 +71,7 @@ typedef struct passinfo
     int cmd_buf_type; /* CMD_type ||, &&, ; */
 } info_t;
 
-#define INFO_INIT { NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, 0 }
+#define INFO_INIT { NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, 0, NULL, 0 }
 
 /**
  *struct builtin - contains a builtin string and related function
@@ -136,7 +135,6 @@ ssize_t get_input(info_t *);
 void sigintHandler(int);
 
 /* toem_getinfo.c */
-void clear_info(info_t *);
 void set_info(info_t *, char **);
 void free_info(info_t *, int);
 

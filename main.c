@@ -11,7 +11,7 @@ void set_info(info_t *info, char **av);
  */
 int main(__attribute__((unused)) int ac, char **av)
 {
-    info_t *info = {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, 0};
+    info_t info[] = {INFO_INIT};
     ssize_t r = 0;
     int builtin_ret = 0;
     list_t *node = NULL;
@@ -23,7 +23,6 @@ int main(__attribute__((unused)) int ac, char **av)
 
     while (r != -1 && builtin_ret != -2)
     {
-        clear_info(info);
         if (isatty(STDIN_FILENO))
             _puts("$ ");
         _putchar(FLUSH_BUFFER);
@@ -74,20 +73,7 @@ void set_info(info_t *info, char **av)
         }
         for (i = 0; info->argv && info->argv[i]; i++)
             ;
-        info->argc = i;
 
         replace_vars(info);
     }
-}
-
-/**
- * clear_info - initializes info_t struct
- * @info: struct address
- */
-void clear_info(info_t *info)
-{
-    info->arg = NULL;
-    info->argv = NULL;
-    info->path = NULL;
-    info->argc = 0;
 }
