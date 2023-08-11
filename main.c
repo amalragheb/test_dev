@@ -1,5 +1,7 @@
 #include "shell.h"
 
+void set_info(info_t *info, char **av);
+
 /**
  * main - entry point
  * @ac: arg count
@@ -9,15 +11,15 @@
  */
 int main(__attribute__((unused)) int ac, char **av)
 {
-    info_t info[] = {INFO_INIT};
+    info_t *info = {NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, 0};
     ssize_t r = 0;
     int builtin_ret = 0;
     list_t *node = NULL;
-	size_t i;
+    size_t i;
 
-	for (i = 0; environ[i]; i++)
-		add_node_end(&node, environ[i], 0);
-	info->env = node;
+    for (i = 0; environ[i]; i++)
+        add_node_end(&node, environ[i], 0);
+    info->env = node;
 
     while (r != -1 && builtin_ret != -2)
     {
@@ -31,7 +33,7 @@ int main(__attribute__((unused)) int ac, char **av)
             set_info(info, av);
             builtin_ret = find_builtin(info);
             if (builtin_ret == -1)
-                find_cmd(info);
+                execute_command(info);
         }
         free_info(info, 0);
     }
@@ -45,4 +47,47 @@ int main(__attribute__((unused)) int ac, char **av)
         exit(info->err_num);
     }
     return (EXIT_SUCCESS);
+}
+
+/**
+ * set_info - initializes info_t struct
+ * @info: struct address
+ * @av: argument vector
+ */
+void set_info(info_t *info, char **av)
+{
+    int i = 0;
+
+    info->fname = av[0];
+    if (info->arg)
+    {
+        info->argv = strtow(info->arg, " \t");
+        if (!info->argv)
+        {
+
+            info->argv = malloc(sizeof(char *) * 2);
+            if (info->argv)
+            {
+                info->argv[0] = _strdup(info->arg);
+                info->argv[1] = NULL;
+            }
+        }
+        for (i = 0; info->argv && info->argv[i]; i++)
+            ;
+        info->argc = i;
+
+        replace_vars(info);
+    }
+}
+
+/**
+ * clear_info - initializes info_t struct
+ * @info: struct address
+ */
+void clear_info(info_t *info)
+{
+    info->arg = NULL;
+    info->argv = NULL;
+    info->path = NULL;
+    info->argc = 0;
 }

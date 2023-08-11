@@ -17,8 +17,8 @@
 #define FLUSH_BUFFER -1
 
 /* for command chaining */
-#define CMD_OR		1
-#define CMD_AND		2
+#define CMD_OR 1
+#define CMD_AND 2
 
 extern char **environ;
 
@@ -30,9 +30,9 @@ extern char **environ;
  */
 typedef struct liststr
 {
-	int num;
-	char *str;
-	struct liststr *next;
+    int num;
+    char *str;
+    struct liststr *next;
 } list_t;
 
 /**
@@ -56,24 +56,23 @@ typedef struct liststr
  */
 typedef struct passinfo
 {
-	char *arg;
-	char **argv;
-	char *path;
-	int argc;
-	unsigned int line_count;
-	int err_num;
-	int linecount_flag;
-	char *fname; /* file name */
-	list_t *env;
-	char **environ;
-	int status;
+    char *arg;
+    char **argv;
+    char *path;
+    int argc;
+    unsigned int line_count;
+    int err_num;
+    int linecount_flag;
+    char *fname; /* file name */
+    list_t *env;
+    char **environ;
+    int status;
 
-	char **cmd_buf; /* pointer to cmd ; chain buffer, for memory mangement */
-	int cmd_buf_type; /* CMD_type ||, &&, ; */
+    char **cmd_buf;   /* pointer to cmd ; chain buffer, for memory mangement */
+    int cmd_buf_type; /* CMD_type ||, &&, ; */
 } info_t;
 
-#define INFO_INIT \
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, 0}
+#define INFO_INIT { NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, 0 }
 
 /**
  *struct builtin - contains a builtin string and related function
@@ -82,14 +81,13 @@ typedef struct passinfo
  */
 typedef struct builtin
 {
-	char *type;
-	int (*func)(info_t *);
+    char *type;
+    int (*func)(info_t *);
 } builtin_table;
-
 
 /* toem_shloop.c */
 int find_builtin(info_t *);
-void find_cmd(info_t *);
+void execute_command(info_t *);
 /* toem_parser.c */
 int is_cmd(info_t *, char *);
 char *dup_chars(char *, int, int);
