@@ -12,8 +12,12 @@ int main(__attribute__((unused)) int ac, char **av)
     info_t info[] = {INFO_INIT};
     ssize_t r = 0;
     int builtin_ret = 0;
+    list_t *node = NULL;
+	size_t i;
 
-    populate_env_list(info);
+	for (i = 0; environ[i]; i++)
+		add_node_end(&node, environ[i], 0);
+	info->env = node;
 
     while (r != -1 && builtin_ret != -2)
     {

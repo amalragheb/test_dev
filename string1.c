@@ -1,87 +1,36 @@
 #include "shell.h"
 
 /**
- * _strcpy - copies a string
- * @dest: the destination
- * @src: the source
- *
- * Return: pointer to destination
+ **_strchr - locates a character in a string
+ *@s: the string to be parsed
+ *@c: the character to look for
+ *Return: (s) a pointer to the memory area s
  */
-char *_strcpy(char *dest, char *src)
+char *_strchr(char *s, char c)
 {
-	int i = 0;
+	do {
+		if (*s == c)
+			return (s);
+	} while (*s++ != '\0');
 
-	if (dest == src || src == 0)
-		return (dest);
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = 0;
-	return (dest);
+	return (NULL);
 }
 
 /**
- * _strdup - duplicates a string
- * @str: the string to duplicate
+ * _strcat - concatenates two strings
+ * @dest: the destination buffer
+ * @src: the source buffer
  *
- * Return: pointer to the duplicated string
+ * Return: pointer to destination buffer
  */
-char *_strdup(const char *str)
+char *_strcat(char *dest, char *src)
 {
-	int length = 0;
-	char *ret;
+	char *ret = dest;
 
-	if (str == NULL)
-		return (NULL);
-	while (*str++)
-		length++;
-	ret = malloc(sizeof(char) * (length + 1));
-	if (!ret)
-		return (NULL);
-	for (length++; length--;)
-		ret[length] = *--str;
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = *src;
 	return (ret);
-}
-
-/**
- *_puts - prints an input string
- *@str: the string to be printed
- *
- * Return: Nothing
- */
-void _puts(char *str)
-{
-	int i = 0;
-
-	if (!str)
-		return;
-	while (str[i] != '\0')
-	{
-		_putchar(str[i]);
-		i++;
-	}
-}
-
-/**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
-int _putchar(char c)
-{
-	static int i;
-	static char buf[BUFFER_SIZE];
-
-	if (c == FLUSH_BUFFER || i >= BUFFER_SIZE)
-	{
-		write(1, buf, i);
-		i = 0;
-	}
-	if (c != FLUSH_BUFFER)
-		buf[i++] = c;
-	return (1);
 }

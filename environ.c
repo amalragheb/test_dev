@@ -43,18 +43,17 @@ char *_getenv(info_t *info, const char *name)
 }
 
 /**
- * populate_env_list - populates env linked list
+ * get_environ - returns the string array copy of our environ
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  * Return: Always 0
  */
-int populate_env_list(info_t *info)
+char **get_environ(info_t *info)
 {
-	list_t *node = NULL;
-	size_t i;
+	if (!info->environ)
+	{
+		info->environ = list_to_strings(info->env);
+	}
 
-	for (i = 0; environ[i]; i++)
-		add_node_end(&node, environ[i], 0);
-	info->env = node;
-	return (0);
+	return (info->environ);
 }
