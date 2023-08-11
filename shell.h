@@ -65,7 +65,6 @@ typedef struct passinfo
 	int linecount_flag;
 	char *fname; /* file name */
 	list_t *env;
-	list_t *alias;
 	char **environ;
 	int status;
 
@@ -74,7 +73,7 @@ typedef struct passinfo
 } info_t;
 
 #define INFO_INIT \
-{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, NULL, 0, NULL, 0}
+{NULL, NULL, NULL, 0, 0, 0, 0, NULL, NULL, NULL, 0, NULL, 0}
 
 /**
  *struct builtin - contains a builtin string and related function
@@ -152,7 +151,6 @@ int populate_env_list(info_t *);
 char **get_environ(info_t *);
 
 /* toem_lists.c */
-list_t *add_node(list_t **, const char *, int);
 list_t *add_node_end(list_t **, const char *, int);
 size_t print_list_str(const list_t *);
 void free_list(list_t **);
@@ -166,7 +164,6 @@ list_t *node_starts_with(list_t *, char *, char);
 /* toem_vars.c */
 int is_chain(info_t *, char *, size_t *);
 void check_chain(info_t *, char *, size_t *, size_t, size_t);
-int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
 
