@@ -1,63 +1,63 @@
 #include "shell.h"
 
 /**
- * **strtow - splits a string into words. Repeat delimiters are ignored
- * @str: the input string
- * @d: the delimeter string
- * Return: a pointer to an array of strings, or NULL on failure
+ * **splitsIN - splits a string into words.
+ * @ss: input string
+ * @meter: the delimeter
+ * Return: pointer to an array of strings, or NULL
  */
 
-char **strtow(char *str, char *d)
+char **splitsIN(char *ss, char *meter)
 {
-	int i, j, k, m, numwords = 0;
-	char **s;
+	int e, f, g, q, nowrz = 0;
+	char **str;
 
-	if (str == NULL || str[0] == 0)
+	if (ss == NULL || ss[0] == 0)
 		return (NULL);
-	if (!d)
-		d = " ";
-	for (i = 0; str[i] != '\0'; i++)
-		if (!is_delim(str[i], d) && (is_delim(str[i + 1], d) || !str[i + 1]))
-			numwords++;
+	if (meter == NULL)
+		meter = " ";
+	for (e = 0; ss[e] != '\0'; e++)
+		if (!ismeter(ss[e], meter) && (ismeter(ss[e + 1], meter) || !ss[e + 1]))
+			nowrz++;
 
-	if (numwords == 0)
+	if (nowrz == 0)
 		return (NULL);
-	s = malloc((1 + numwords) * sizeof(char *));
-	if (!s)
+	str = malloc((1 + nowrz) * sizeof(char *));
+	if (str == NULL)
 		return (NULL);
-	for (i = 0, j = 0; j < numwords; j++)
+	for (e = 0, f = 0; f < nowrz; f++)
 	{
-		while (is_delim(str[i], d))
-			i++;
-		k = 0;
-		while (!is_delim(str[i + k], d) && str[i + k])
-			k++;
-		s[j] = malloc((k + 1) * sizeof(char));
-		if (!s[j])
+		while (ismeter(ss[e], meter))
+			e++;
+		g = 0;
+		while (!ismeter(ss[e + g], meter) && ss[e + g])
+			g++;
+		str[f] = malloc((g + 1) * sizeof(char));
+		if (!str[f])
 		{
-			for (k = 0; k < j; k++)
-				free(s[k]);
-			free(s);
+			for (g = 0; g < f; g++)
+				free(str[g]);
+			free(str);
 			return (NULL);
 		}
-		for (m = 0; m < k; m++)
-			s[j][m] = str[i++];
-		s[j][m] = 0;
+		for (q = 0; q < g; q++)
+			str[f][q] = ss[e++];
+		str[f][q] = 0;
 	}
-	s[j] = NULL;
-	return (s);
+	str[f] = NULL;
+	return (str);
 }
 
 /**
- * is_delim - checks if character is a delimeter
- * @c: the char to check
- * @delim: the delimeter string
+ * ismeter - checks if character is a delimeter
+ * @ch: the char to check
+ * @dlm: the delimeter string
  * Return: 1 if true, 0 if false
  */
-int is_delim(char c, char *delim)
+int ismeter(char ch, char *dlm)
 {
-	while (*delim)
-		if (*delim++ == c)
+	while (*dlm)
+		if (*dlm++ == ch)
 			return (1);
 	return (0);
 }

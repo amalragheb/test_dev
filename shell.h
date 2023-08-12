@@ -87,6 +87,8 @@ typedef struct builtin
 /* toem_shloop.c */
 int find_builtin(info_t *);
 void execute_command(info_t *);
+
+/*delet this no need more*/
 /* toem_parser.c */
 int is_cmd(info_t *, char *);
 char *dup_chars(char *, int, int);
@@ -107,7 +109,10 @@ int _putchar(char);
 char *_strchr(char *, char);
 
 /* toem_tokenizer.c */
-char **strtow(char *, char *);
+/*char **strtow(char *, char *)*/
+char **splitsIN(char *ss, char *meter);
+/*int is_delim(char, char *)*/
+int ismeter(char ch, char *dlm);
 
 /* toem_realloc.c */
 char *_memset(char *, char, unsigned int);
@@ -117,7 +122,7 @@ void ffree(char **);
 int bfree(void **);
 
 /* toem_atoi.c */
-int is_delim(char, char *);
+
 
 /* toem_errors1.c */
 int _atoi(char *);
