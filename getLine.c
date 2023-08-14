@@ -8,7 +8,7 @@
  *
  * Return: bytes read
  */
-ssize_t input_buf(info_t *info, char **buf, size_t *len)
+ssize_t input_buf(hsh_t *info, char **buf, size_t *len)
 {
     ssize_t r = 0;
     size_t len_p = 0;
@@ -43,7 +43,7 @@ ssize_t input_buf(info_t *info, char **buf, size_t *len)
  *
  * Return: bytes read
  */
-ssize_t get_input(info_t *info)
+ssize_t get_input(hsh_t *info)
 {
     static char *buf; /* the ';' command chain buffer */
     static size_t i, j, len;

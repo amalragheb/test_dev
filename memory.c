@@ -9,11 +9,11 @@
  */
 char *_memset(char *s, char b, unsigned int n)
 {
-	unsigned int i;
+    unsigned int i;
 
-	for (i = 0; i < n; i++)
-		s[i] = b;
-	return (s);
+    for (i = 0; i < n; i++)
+        s[i] = b;
+    return (s);
 }
 
 /**
@@ -22,13 +22,13 @@ char *_memset(char *s, char b, unsigned int n)
  */
 void ffree(char **pp)
 {
-	char **a = pp;
+    char **a = pp;
 
-	if (!pp)
-		return;
-	while (*pp)
-		free(*pp++);
-	free(a);
+    if (!pp)
+        return;
+    while (*pp)
+        free(*pp++);
+    free(a);
 }
 
 /**
@@ -39,36 +39,36 @@ void ffree(char **pp)
  */
 int bfree(void **ptr)
 {
-	if (ptr && *ptr)
-	{
-		free(*ptr);
-		*ptr = NULL;
-		return (1);
-	}
-	return (0);
+    if (ptr && *ptr)
+    {
+        free(*ptr);
+        *ptr = NULL;
+        return (1);
+    }
+    return (0);
 }
 
 /**
- * free_info - frees info_t struct fields
+ * free_info - frees hsh_t struct fields
  * @info: struct address
  * @all: true if freeing all fields
  */
-void free_info(info_t *info, int all)
+void free_info(hsh_t *info, int all)
 {
-	ffree(info->argv);
-	info->argv = NULL;
-	info->path = NULL;
-	if (all)
-	{
-		if (!info->cmd_buf)
-			free(info->arg);
-		if (info->env)
-			free_list(&(info->env));
-		ffree(info->environ);
-			info->environ = NULL;
-		bfree((void **)info->cmd_buf);
-		_putchar(FLUSH_BUFFER);
-	}
+    ffree(info->argv);
+    info->argv = NULL;
+    info->path = NULL;
+    if (all)
+    {
+        if (!info->cmd_buf)
+            free(info->arg);
+        if (info->env)
+            free_list(&(info->env));
+        ffree(info->environ);
+        info->environ = NULL;
+        bfree((void **)info->cmd_buf);
+        _putchar(FLUSH_BUFFER);
+    }
 }
 /**
  * free_list - frees all nodes of a list
@@ -76,20 +76,20 @@ void free_info(info_t *info, int all)
  *
  * Return: void
  */
-void free_list(list_t **head_ptr)
+void free_list(var_t **head_ptr)
 {
-	list_t *node, *next_node, *head;
+    var_t *node, *next_node, *head;
 
-	if (!head_ptr || !*head_ptr)
-		return;
-	head = *head_ptr;
-	node = head;
-	while (node)
-	{
-		next_node = node->next;
-		free(node->str);
-		free(node);
-		node = next_node;
-	}
-	*head_ptr = NULL;
+    if (!head_ptr || !*head_ptr)
+        return;
+    head = *head_ptr;
+    node = head;
+    while (node)
+    {
+        next_node = node->next;
+        free(node->str);
+        free(node);
+        node = next_node;
+    }
+    *head_ptr = NULL;
 }

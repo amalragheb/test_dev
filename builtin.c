@@ -9,7 +9,7 @@
  *			1 if builtin found but not successful,
  *			-2 if builtin signals exit()
  */
-int find_builtin(info_t *info)
+int find_builtin(hsh_t *info)
 {
     int i, built_in_ret = -1;
     builtin_t builtintbl[] = {
@@ -35,7 +35,7 @@ int find_builtin(info_t *info)
  *  Return: exits with a given exit status
  *         (0) if info.argv[0] != "exit"
  */
-int _myexit(info_t *info)
+int _myexit(hsh_t *info)
 {
     int exitcheck;
 
@@ -64,7 +64,7 @@ int _myexit(info_t *info)
  *  Return: Always 0
  */
 
-int _mycd(info_t *info)
+int _mycd(hsh_t *info)
 {
     char *s, *dir, buffer[1024];
     int chdir_ret;

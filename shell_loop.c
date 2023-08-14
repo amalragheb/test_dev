@@ -6,7 +6,7 @@
  *
  * Return: void
  */
-void execute_command(info_t *info)
+void execute_command(hsh_t *info)
 {
     char *path = NULL;
     int i, k;
@@ -19,7 +19,7 @@ void execute_command(info_t *info)
         info->linecount_flag = 0;
     }
     for (i = 0, k = 0; info->arg[i]; i++)
-        if (!is_delim(info->arg[i], " \t\n"))
+        if (!is_delimiter(info->arg[i], " \t\n"))
             k++;
     if (!k)
         return;
@@ -64,7 +64,7 @@ void execute_command(info_t *info)
  *
  * Return: 1 if true, 0 otherwise
  */
-int is_cmd(info_t *info, char *path)
+int is_cmd(hsh_t *info, char *path)
 {
     struct stat st;
 
@@ -87,7 +87,7 @@ int is_cmd(info_t *info, char *path)
  *
  * Return: full path of cmd if found or NULL
  */
-char *find_path(info_t *info, char *pathstr, char *cmd)
+char *find_path(hsh_t *info, char *pathstr, char *cmd)
 {
     int i = 0, curr_pos = 0;
     char *path;

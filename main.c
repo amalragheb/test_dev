@@ -1,6 +1,6 @@
 #include "shell.h"
 
-void set_info(info_t *info, char **av);
+void set_info(hsh_t *info, char **av);
 
 /**
  * main - entry point
@@ -11,10 +11,10 @@ void set_info(info_t *info, char **av);
  */
 int main(__attribute__((unused)) int ac, char **av)
 {
-    info_t info[] = {INFO_INIT};
+    hsh_t info[] = {INFO_INIT};
     ssize_t r = 0;
     int builtin_ret = 0;
-    list_t *node = NULL;
+    var_t *node = NULL;
     size_t i;
 
     for (i = 0; environ[i]; i++)
@@ -49,18 +49,18 @@ int main(__attribute__((unused)) int ac, char **av)
 }
 
 /**
- * set_info - initializes info_t struct
+ * set_info - initializes hsh_t struct
  * @info: struct address
  * @av: argument vector
  */
-void set_info(info_t *info, char **av)
+void set_info(hsh_t *info, char **av)
 {
     int i = 0;
 
     info->fname = av[0];
     if (info->arg)
     {
-        info->argv = strtow(info->arg, " \t");
+        info->argv = _split_str(info->arg, " \t");
         if (!info->argv)
         {
 
