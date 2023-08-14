@@ -71,7 +71,7 @@ int _mycd(info_t *info)
 
     s = getcwd(buffer, 1024);
     if (!s)
-        _puts("TODO: >>getcwd failure emsg here<<\n");
+        _puts("getcwd failure\n");
     if (!info->argv[1])
     {
         dir = _getenv(info, "HOME=");
@@ -95,8 +95,8 @@ int _mycd(info_t *info)
         chdir_ret = chdir(info->argv[1]);
     if (chdir_ret == -1)
     {
-        print_error(info, "can't cd to ");
         _puts(info->argv[1]), _putchar('\n');
+        print_error(info, "can't cd to ");
     }
 
     return (0);
