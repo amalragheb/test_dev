@@ -85,23 +85,21 @@ int replace_vars(hsh_t *info)
         if (info->argv[i][0] != '$' || !info->argv[i][1])
             continue;
 
-        if (!strcmp(info->argv[i], "$?"))
+        if (!_strcmp(info->argv[i], "$?"))
         {
             replace_string(&(info->argv[i]),
-                           _strdup(convert_number(info->status, 10)));
+            _strdup(convert_number(info->status, 10)));
             continue;
         }
-        if (!strcmp(info->argv[i], "$$"))
+        if (!_strcmp(info->argv[i], "$$"))
         {
-            replace_string(&(info->argv[i]),
-                           _strdup(convert_number(getpid(), 10)));
+            replace_string(&(info->argv[i]), _strdup(convert_number(getpid(), 10)));
             continue;
         }
         node = node_starts_with(info->env, &info->argv[i][1], '=');
         if (node)
         {
-            replace_string(&(info->argv[i]),
-                           _strdup(_strchr(node->str, '=') + 1));
+            replace_string(&(info->argv[i]), _strdup(_strchr(node->str, '=') + 1));
             continue;
         }
         replace_string(&info->argv[i], _strdup(""));

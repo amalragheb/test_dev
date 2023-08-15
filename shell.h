@@ -102,6 +102,7 @@ char *_strcat(char *, char *);
 /* toem_string1.c */
 char *_strcpy(char *, char *);
 char *_strdup(const char *);
+int _strcmp(char *, char *);
 void _puts(char *);
 int _putchar(char);
 

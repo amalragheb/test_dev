@@ -19,7 +19,7 @@ int find_builtin(hsh_t *info)
         {NULL, NULL}};
 
     for (i = 0; builtintbl[i].type; i++)
-        if (strcmp(info->argv[0], builtintbl[i].type) == 0)
+        if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
         {
             info->line_count++;
             built_in_ret = builtintbl[i].func(info);
@@ -80,7 +80,7 @@ int _mycd(hsh_t *info)
         else
             chdir_ret = chdir(dir);
     }
-    else if (strcmp(info->argv[1], "-") == 0)
+    else if (_strcmp(info->argv[1], "-") == 0)
     {
         if (!_getenv(info, "OLDPWD="))
         {
