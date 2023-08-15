@@ -28,10 +28,10 @@ ssize_t input_buf(hsh_t *info, char **buf, size_t *len)
                 (*buf)[r - 1] = '\0'; /* remove trailing newline */
                 r--;
             }
-            info->linecount_flag = 1;
+            info->flag = 1;
             remove_comments(*buf);
             *len = r;
-            info->cmd_buf = buf;
+            info->buffer = buf;
         }
     }
     return (r);
@@ -73,7 +73,7 @@ ssize_t get_input(hsh_t *info)
         if (i >= len) /* reached end of buffer? */
         {
             i = len = 0; /* reset position and length */
-            info->cmd_buf_type = 0;
+            info->buffer_type = 0;
         }
 
         *buf_p = p;          /* pass back pointer to current command position */

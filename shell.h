@@ -32,7 +32,7 @@ typedef struct var_list
 {
     int num;
     char *str;
-    struct liststr *next;
+    struct var_list *next;
 } var_t;
 
 /**
@@ -43,34 +43,33 @@ typedef struct var_list
  *@path: a string path for the current command
  *@line_count: the error count
  *@err_num: the error code for exit()s
- *@linecount_flag: if on count this line of input
- *@fname: the program filename
+ *@flag: if on count this line of input
+ *@hsh_name: the program filename
  *@env: linked list local copy of environ
  *@environ: custom modified copy of environ from LL env
  *@status: the return status of the last exec'd command
- *@cmd_buf: address of pointer to cmd_buf, on if chaining
- *@cmd_buf_type: CMD_type ||, &&, ;
+ *@buffer: address of pointer to buffer, on if chaining
+ *@buffer_type: CMD_type ||, &&, ;
  */
 typedef struct hsh_data
 {
+    char *hsh_name;
+    char **buffer;
+    int buffer_type;
     char *arg;
     char **argv;
     char *path;
     unsigned int line_count;
     int err_num;
-    int linecount_flag;
-    char *fname;
+    int flag;
     var_t *env;
     char **environ;
     int status;
-
-    char **cmd_buf;   /* pointer to cmd ; chain buffer, for memory mangement */
-    int cmd_buf_type; /* CMD_type ||, &&, ; */
 } hsh_t;
 
 #define INFO_INIT                                               \
     {                                                           \
-        NULL, NULL, NULL, 0, 0, 0, NULL, NULL, NULL, 0, NULL, 0 \
+        NULL, NULL, 0, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, 0 \
     }
 
 /**
@@ -140,7 +139,7 @@ ssize_t get_input(hsh_t *);
 void sigintHandler(int);
 
 /* toem_getinfo.c */
-void set_info(hsh_t *, char **);
+void init_hsh(hsh_t *, char **);
 void free_info(hsh_t *, int);
 
 /* toem_environ.c */

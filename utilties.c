@@ -37,7 +37,7 @@ int _atoi(char *s)
  */
 void print_error(hsh_t *info, char *estr)
 {
-    _puts(info->fname);
+    _puts(info->hsh_name);
     _puts(": ");
     print_d(info->line_count);
     _puts(": ");

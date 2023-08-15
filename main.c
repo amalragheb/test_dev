@@ -1,7 +1,5 @@
 #include "shell.h"
 
-void set_info(hsh_t *info, char **av);
-
 /**
  * main - entry point
  * @ac: arg count
@@ -29,7 +27,7 @@ int main(__attribute__((unused)) int ac, char **av)
         r = get_input(info);
         if (r != -1)
         {
-            set_info(info, av);
+            init_hsh(info, av);
             builtin_ret = find_builtin(info);
             if (builtin_ret == -1)
                 execute_command(info);
@@ -49,15 +47,15 @@ int main(__attribute__((unused)) int ac, char **av)
 }
 
 /**
- * set_info - initializes hsh_t struct
+ * init_hsh - initializes hsh_t struct
  * @info: struct address
  * @av: argument vector
  */
-void set_info(hsh_t *info, char **av)
+void init_hsh(hsh_t *info, char **av)
 {
     int i = 0;
 
-    info->fname = av[0];
+    info->hsh_name = av[0];
     if (info->arg)
     {
         info->argv = _split_str(info->arg, " \t");

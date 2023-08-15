@@ -103,7 +103,7 @@ char **list_to_strings(var_t *head)
  *
  * Return: match node or null
  */
-list_t *node_starts_with(var_t *node, char *prefix, char c)
+var_t *node_starts_with(var_t *node, char *prefix, char c)
 {
     char *p = NULL;
 

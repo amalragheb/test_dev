@@ -16,18 +16,18 @@ int is_chain(hsh_t *info, char *buf, size_t *p)
     {
         buf[j] = 0;
         j++;
-        info->cmd_buf_type = CMD_OR;
+        info->buffer_type = CMD_OR;
     }
     else if (buf[j] == '&' && buf[j + 1] == '&')
     {
         buf[j] = 0;
         j++;
-        info->cmd_buf_type = CMD_AND;
+        info->buffer_type = CMD_AND;
     }
     else if (buf[j] == ';') /* found end of this command */
     {
         buf[j] = 0; /* replace semicolon with null */
-        info->cmd_buf_type = 3;
+        info->buffer_type = 3;
     }
     else
         return (0);
@@ -49,7 +49,7 @@ void check_chain(hsh_t *info, char *buf, size_t *p, size_t i, size_t len)
 {
     size_t j = *p;
 
-    if (info->cmd_buf_type == CMD_AND)
+    if (info->buffer_type == CMD_AND)
     {
         if (info->status)
         {
@@ -57,7 +57,7 @@ void check_chain(hsh_t *info, char *buf, size_t *p, size_t i, size_t len)
             j = len;
         }
     }
-    if (info->cmd_buf_type == CMD_OR)
+    if (info->buffer_type == CMD_OR)
     {
         if (!info->status)
         {
@@ -88,7 +88,7 @@ int replace_vars(hsh_t *info)
         if (!_strcmp(info->argv[i], "$?"))
         {
             replace_string(&(info->argv[i]),
-            _strdup(convert_number(info->status, 10)));
+                           _strdup(convert_number(info->status, 10)));
             continue;
         }
         if (!_strcmp(info->argv[i], "$$"))
