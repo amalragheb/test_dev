@@ -23,7 +23,7 @@ void execute_command(hsh_t *info)
             k++;
     if (!k)
         return;
-    path = find_path(info, _getenv(info, "PATH="), info->argv[0]);
+    path = find_path(_getenv(info, "PATH="), info->argv[0]);
     if (path)
     {
         info->path = path;
@@ -79,13 +79,12 @@ int is_executable(char *path)
 
 /**
  * find_path - finds this cmd in the PATH string
- * @info: the info struct
  * @pathstr: the PATH string
  * @cmd: the cmd to find
  *
  * Return: full path of cmd if found or NULL
  */
-char *find_path(hsh_t *info, char *pathstr, char *cmd)
+char *find_path(char *pathstr, char *cmd)
 {
     int i = 0, curr_pos = 0;
     char *path;

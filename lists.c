@@ -10,7 +10,10 @@
  */
 var_t *add_node_end(var_t **head, const char *str, int num)
 {
+    unsigned int i;
+    char *s;
     var_t *new_node, *node;
+    unsigned int n = sizeof(var_t);
 
     if (!head)
         return (NULL);
@@ -19,7 +22,11 @@ var_t *add_node_end(var_t **head, const char *str, int num)
     new_node = malloc(sizeof(var_t));
     if (!new_node)
         return (NULL);
-    _memset((void *)new_node, 0, sizeof(var_t));
+
+    s = (void *)new_node;
+    for (i = 0; i < n; i++)
+        s[i] = 0;
+
     new_node->num = num;
     if (str)
     {

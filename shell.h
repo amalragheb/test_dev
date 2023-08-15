@@ -87,7 +87,7 @@ void execute_command(hsh_t *);
 /* toem_parser.c */
 int is_executable(char *);
 char *dup_chars(char *, int, int);
-char *find_path(hsh_t *, char *, char *);
+char *find_path(char *, char *);
 
 /* toem_string.c */
 int _strlen(char *);
@@ -111,7 +111,6 @@ char **_split_str(char *ss, char *meter);
 int is_delimiter(char ch, char *dlm);
 
 /* toem_realloc.c */
-char *_memset(char *, char, unsigned int);
 void ffree(char **);
 
 /* toem_memory.c */
