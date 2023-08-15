@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * find_builtin - finds a builtin command
+ * check_builtin - finds a builtin command
  * @info: the parameter & return info struct
  *
  * Return: -1 if builtin not found,
@@ -9,7 +9,7 @@
  *			1 if builtin found but not successful,
  *			-2 if builtin signals exit()
  */
-int find_builtin(hsh_t *info)
+int check_builtin(hsh_t *info)
 {
     int i, return_status = -1;
     builtin_t builtins[] = {

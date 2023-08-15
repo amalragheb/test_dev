@@ -26,7 +26,7 @@ int main(__attribute__((unused)) int ac, char **av)
         if (r != -1)
         {
             init_hsh(info, av);
-            builtin_ret = find_builtin(info);
+            builtin_ret = check_builtin(info);
             if (builtin_ret == -1)
                 execute_command(info);
         }

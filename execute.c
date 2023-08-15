@@ -58,17 +58,15 @@ void execute_command(hsh_t *info)
 }
 
 /**
- * is_cmd - determines if a file is an executable command
- * @info: the info struct
+ * is_executable - determines if a file is an executable command
  * @path: path to the file
  *
  * Return: 1 if true, 0 otherwise
  */
-int is_cmd(hsh_t *info, char *path)
+int is_executable(char *path)
 {
     struct stat st;
 
-    (void)info;
     if (!path || stat(path, &st))
         return (0);
 
@@ -96,7 +94,7 @@ char *find_path(hsh_t *info, char *pathstr, char *cmd)
         return (NULL);
     if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
     {
-        if (is_cmd(info, cmd))
+        if (is_executable(cmd))
             return (cmd);
     }
     while (1)
@@ -111,7 +109,7 @@ char *find_path(hsh_t *info, char *pathstr, char *cmd)
                 _strcat(path, "/");
                 _strcat(path, cmd);
             }
-            if (is_cmd(info, path))
+            if (is_executable(path))
                 return (path);
             if (!pathstr[i])
                 break;

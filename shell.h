@@ -80,12 +80,12 @@ typedef struct builtin
 } builtin_t;
 
 /* toem_shloop.c */
-int find_builtin(hsh_t *);
+int check_builtin(hsh_t *);
 void execute_command(hsh_t *);
 
 /*delet this no need more*/
 /* toem_parser.c */
-int is_cmd(hsh_t *, char *);
+int is_executable(char *);
 char *dup_chars(char *, int, int);
 char *find_path(hsh_t *, char *, char *);
 
