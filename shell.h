@@ -16,10 +16,6 @@
 #define BUFFER_SIZE 1024
 #define FLUSH_BUFFER -1
 
-/* for command chaining */
-#define CMD_OR 1
-#define CMD_AND 2
-
 extern char **environ;
 
 /**
@@ -36,20 +32,20 @@ typedef struct var_list
 } var_t;
 
 /**
- * struct hsh_data - contains pseudo-arguements to pass into a function,
+ * struct hsh_data - contains pseudo-arguments to pass into a function,
  *		allowing uniform prototype for function pointer struct
- *@arg: a string generated from getline containing arguements
+ *@hsh_name: the shell filename
+ *@buffer: address of pointer to buffer
+ *@buffer_type: type ||, &&, ;
+ *@arg: a string generated from getline containing arguments
  *@argv: an array of strings generated from arg
  *@path: a string path for the current command
  *@line_count: the error count
- *@err_num: the error code for exit()s
- *@flag: if on count this line of input
- *@hsh_name: the program filename
+ *@err_num: the error code for exit
+ *@flag: flag count line of input
  *@env: linked list local copy of environ
- *@environ: custom modified copy of environ from LL env
- *@status: the return status of the last exec'd command
- *@buffer: address of pointer to buffer, on if chaining
- *@buffer_type: CMD_type ||, &&, ;
+ *@environ: copy of environ
+ *@status: status of the last execute command
  */
 typedef struct hsh_data
 {
@@ -135,12 +131,13 @@ int _myexit(hsh_t *);
 int _mycd(hsh_t *);
 
 /*toem_getline.c */
-ssize_t get_input(hsh_t *);
+ssize_t read_line(hsh_t *);
 void sigintHandler(int);
 
 /* toem_getinfo.c */
 void init_hsh(hsh_t *, char **);
-void free_info(hsh_t *, int);
+void reset_hsh(hsh_t *);
+void prompt();
 
 /* toem_environ.c */
 char *_getenv(hsh_t *, const char *);

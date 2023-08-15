@@ -16,13 +16,13 @@ int is_chain(hsh_t *info, char *buf, size_t *p)
     {
         buf[j] = 0;
         j++;
-        info->buffer_type = CMD_OR;
+        info->buffer_type = 1;
     }
     else if (buf[j] == '&' && buf[j + 1] == '&')
     {
         buf[j] = 0;
         j++;
-        info->buffer_type = CMD_AND;
+        info->buffer_type = 2;
     }
     else if (buf[j] == ';') /* found end of this command */
     {
@@ -49,7 +49,7 @@ void check_chain(hsh_t *info, char *buf, size_t *p, size_t i, size_t len)
 {
     size_t j = *p;
 
-    if (info->buffer_type == CMD_AND)
+    if (info->buffer_type == 2)
     {
         if (info->status)
         {
@@ -57,7 +57,7 @@ void check_chain(hsh_t *info, char *buf, size_t *p, size_t i, size_t len)
             j = len;
         }
     }
-    if (info->buffer_type == CMD_OR)
+    if (info->buffer_type == 1)
     {
         if (!info->status)
         {

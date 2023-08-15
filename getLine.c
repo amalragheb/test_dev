@@ -38,12 +38,12 @@ ssize_t input_buf(hsh_t *info, char **buf, size_t *len)
 }
 
 /**
- * get_input - gets a line minus the newline
+ * read_line - gets a line minus the newline
  * @info: parameter struct
  *
  * Return: bytes read
  */
-ssize_t get_input(hsh_t *info)
+ssize_t read_line(hsh_t *info)
 {
     static char *buf; /* the ';' command chain buffer */
     static size_t i, j, len;

@@ -49,28 +49,6 @@ int bfree(void **ptr)
 }
 
 /**
- * free_info - frees hsh_t struct fields
- * @info: struct address
- * @all: true if freeing all fields
- */
-void free_info(hsh_t *info, int all)
-{
-    ffree(info->argv);
-    info->argv = NULL;
-    info->path = NULL;
-    if (all)
-    {
-        if (!info->buffer)
-            free(info->arg);
-        if (info->env)
-            free_list(&(info->env));
-        ffree(info->environ);
-        info->environ = NULL;
-        bfree((void **)info->buffer);
-        _putchar(FLUSH_BUFFER);
-    }
-}
-/**
  * free_list - frees all nodes of a list
  * @head_ptr: address of pointer to head node
  *
