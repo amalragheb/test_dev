@@ -11,38 +11,38 @@
  */
 int find_builtin(hsh_t *info)
 {
-    int i, built_in_ret = -1;
-    builtin_t builtintbl[] = {
-        {"exit", _myexit},
-        {"env", _myenv},
-        {"cd", _mycd},
+    int i, return_status = -1;
+    builtin_t builtins[] = {
+        {"env", hsh_env},
+        {"cd", hsh_cd},
+        {"exit", hsh_exit},
         {NULL, NULL}};
 
-    for (i = 0; builtintbl[i].type; i++)
-        if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
+    for (i = 0; builtins[i].type; i++)
+        if (_strcmp(info->argv[0], builtins[i].type) == 0)
         {
             info->line_count++;
-            built_in_ret = builtintbl[i].func(info);
+            return_status = builtins[i].func(info);
             break;
         }
-    return (built_in_ret);
+    return (return_status);
 }
 
 /**
- * _myexit - exits the shell
+ * hsh_exit - exits the shell
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  *  Return: exits with a given exit status
  *         (0) if info.argv[0] != "exit"
  */
-int _myexit(hsh_t *info)
+int hsh_exit(hsh_t *info)
 {
-    int exitcheck;
+    int fmtcheck;
 
     if (info->argv[1]) /* If there is an exit arguement */
     {
-        exitcheck = _atoi(info->argv[1]);
-        if (exitcheck == -1)
+        fmtcheck = _atoi(info->argv[1]);
+        if (fmtcheck == -1)
         {
             info->status = 2;
             print_error(info, "Illegal number: ");
@@ -58,13 +58,13 @@ int _myexit(hsh_t *info)
 }
 
 /**
- * _mycd - changes the current directory of the process
+ * hsh_cd - changes the current directory of the process
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  *  Return: Always 0
  */
 
-int _mycd(hsh_t *info)
+int hsh_cd(hsh_t *info)
 {
     char *s, *dir, buffer[1024];
     int chdir_ret;
@@ -95,8 +95,8 @@ int _mycd(hsh_t *info)
         chdir_ret = chdir(info->argv[1]);
     if (chdir_ret == -1)
     {
-        _puts(info->argv[1]), _putchar('\n');
         print_error(info, "can't cd to ");
+        _puts(info->argv[1]), _putchar('\n');
     }
 
     return (0);

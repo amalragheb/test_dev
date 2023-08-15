@@ -127,8 +127,8 @@ char *convert_number(long int, int);
 void remove_comments(char *);
 
 /* toem_builtin.c */
-int _myexit(hsh_t *);
-int _mycd(hsh_t *);
+int hsh_exit(hsh_t *);
+int hsh_cd(hsh_t *);
 
 /*toem_getline.c */
 ssize_t read_line(hsh_t *);
@@ -141,7 +141,7 @@ void prompt();
 
 /* toem_environ.c */
 char *_getenv(hsh_t *, const char *);
-int _myenv(hsh_t *);
+int hsh_env(hsh_t *);
 
 /* toem_getenv.c */
 char **get_environ(hsh_t *);

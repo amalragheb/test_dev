@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * _myenv - prints the current environment
+ * hsh_env - prints the current environment
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  * Return: Always 0
  */
-int _myenv(hsh_t *info)
+int hsh_env(hsh_t *info)
 {
     var_t *h = info->env;
 
