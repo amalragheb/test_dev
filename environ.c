@@ -1,12 +1,12 @@
 #include "shell.h"
 
 /**
- * hsh_env - prints the current environment
+ * esh_env - prints the current environment
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  * Return: Always 0
  */
-int hsh_env(hsh_t *info)
+int esh_env(esh_t *info)
 {
     var_t *h = info->env;
 
@@ -27,7 +27,7 @@ int hsh_env(hsh_t *info)
  *
  * Return: the value
  */
-char *_getenv(hsh_t *info, const char *name)
+char *_getenv(esh_t *info, const char *name)
 {
     var_t *node = info->env;
     char *p;
@@ -48,7 +48,7 @@ char *_getenv(hsh_t *info, const char *name)
  *          constant function prototype.
  * Return: Always 0
  */
-char **get_environ(hsh_t *info)
+char **get_environ(esh_t *info)
 {
     if (!info->environ)
     {

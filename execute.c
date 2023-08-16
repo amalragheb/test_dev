@@ -6,7 +6,7 @@
  *
  * Return: void
  */
-void execute_command(hsh_t *info)
+void execute_command(esh_t *info)
 {
     char *path = NULL;
     int i, k;
@@ -39,7 +39,7 @@ void execute_command(hsh_t *info)
     {
         if (execve(info->path, info->argv, get_environ(info)) == -1)
         {
-            reset_hsh(info);
+            reset_esh(info);
             if (errno == EACCES)
                 exit(126);
             exit(1);

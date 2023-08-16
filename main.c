@@ -9,7 +9,7 @@
  */
 int main(__attribute__((unused)) int ac, char **av)
 {
-    hsh_t info[] = {INFO_INIT};
+    esh_t info[] = {{ NULL, NULL, 0, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, 0 }};
     ssize_t r = 0;
     int builtin_ret = 0;
     var_t *node = NULL;
@@ -25,16 +25,16 @@ int main(__attribute__((unused)) int ac, char **av)
         r = read_line(info);
         if (r != -1)
         {
-            init_hsh(info, av);
+            init_esh(info, av);
             builtin_ret = check_builtin(info);
             if (builtin_ret == -1)
                 execute_command(info);
         }
-        ffree(info->argv);
+        free_strings(info->argv);
         info->argv = NULL;
         info->path = NULL;
     }
-    reset_hsh(info);
+    reset_esh(info);
     if (!isatty(STDIN_FILENO) && info->status)
         exit(info->status);
     if (builtin_ret == -2)

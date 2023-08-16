@@ -32,9 +32,9 @@ typedef struct var_list
 } var_t;
 
 /**
- * struct hsh_data - contains pseudo-arguments to pass into a function,
+ * struct esh_data - contains pseudo-arguments to pass into a function,
  *		allowing uniform prototype for function pointer struct
- *@hsh_name: the shell filename
+ *@esh_name: the shell filename
  *@buffer: address of pointer to buffer
  *@buffer_type: type ||, &&, ;
  *@arg: a string generated from getline containing arguments
@@ -47,9 +47,9 @@ typedef struct var_list
  *@environ: copy of environ
  *@status: status of the last execute command
  */
-typedef struct hsh_data
+typedef struct esh_data
 {
-    char *hsh_name;
+    char *esh_name;
     char **buffer;
     int buffer_type;
     char *arg;
@@ -61,12 +61,7 @@ typedef struct hsh_data
     var_t *env;
     char **environ;
     int status;
-} hsh_t;
-
-#define INFO_INIT                                               \
-    {                                                           \
-        NULL, NULL, 0, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, 0 \
-    }
+} esh_t;
 
 /**
  *struct builtin - contains a builtin string and related function
@@ -76,12 +71,12 @@ typedef struct hsh_data
 typedef struct builtin
 {
     char *type;
-    int (*func)(hsh_t *);
+    int (*func)(esh_t *);
 } builtin_t;
 
 /* toem_shloop.c */
-int check_builtin(hsh_t *);
-void execute_command(hsh_t *);
+int check_builtin(esh_t *);
+void execute_command(esh_t *);
 
 /*delet this no need more*/
 /* toem_parser.c */
@@ -111,39 +106,39 @@ char **_split_str(char *ss, char *meter);
 int is_delimiter(char ch, char *dlm);
 
 /* toem_realloc.c */
-void ffree(char **);
+void free_strings(char **);
 
 /* toem_memory.c */
-int bfree(void **);
+int pfree(void **);
 
 /* toem_atoi.c */
 
 /* toem_errors1.c */
 int _atoi(char *);
-void print_error(hsh_t *, char *);
+void print_error(esh_t *, char *);
 int print_d(int);
 char *convert_number(long int, int);
 void remove_comments(char *);
 
 /* toem_builtin.c */
-int hsh_exit(hsh_t *);
-int hsh_cd(hsh_t *);
+int esh_exit(esh_t *);
+int esh_cd(esh_t *);
 
 /*toem_getline.c */
-ssize_t read_line(hsh_t *);
+ssize_t read_line(esh_t *);
 void sigintHandler(int);
 
 /* toem_getinfo.c */
-void init_hsh(hsh_t *, char **);
-void reset_hsh(hsh_t *);
+void init_esh(esh_t *, char **);
+void reset_esh(esh_t *);
 void prompt();
 
 /* toem_environ.c */
-char *_getenv(hsh_t *, const char *);
-int hsh_env(hsh_t *);
+char *_getenv(esh_t *, const char *);
+int esh_env(esh_t *);
 
 /* toem_getenv.c */
-char **get_environ(hsh_t *);
+char **get_environ(esh_t *);
 
 /* toem_lists.c */
 var_t *add_node_end(var_t **, const char *, int);
@@ -155,9 +150,9 @@ char **list_to_strings(var_t *);
 var_t *node_starts_with(var_t *, char *, char);
 
 /* toem_vars.c */
-int is_chain(hsh_t *, char *, size_t *);
-void check_chain(hsh_t *, char *, size_t *, size_t, size_t);
-int replace_vars(hsh_t *);
+int is_chain(esh_t *, char *, size_t *);
+void check_chain(esh_t *, char *, size_t *, size_t, size_t);
+int replace_vars(esh_t *);
 int replace_string(char **, char *);
 
 #endif

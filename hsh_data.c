@@ -1,15 +1,15 @@
 #include "shell.h"
 
 /**
- * init_hsh - initializes hsh_t struct
+ * init_esh - initializes esh_t struct
  * @info: struct address
  * @av: argument vector
  */
-void init_hsh(hsh_t *info, char **av)
+void init_esh(esh_t *info, char **av)
 {
     int i = 0;
 
-    info->hsh_name = av[0];
+    info->esh_name = av[0];
     if (info->arg)
     {
         info->argv = _split_str(info->arg, " \t");
@@ -29,21 +29,21 @@ void init_hsh(hsh_t *info, char **av)
     }
 }
 /**
- * free_info - frees hsh_t struct fields
+ * free_info - frees esh_t struct fields
  * @info: struct address
  */
-void reset_hsh(hsh_t *info)
+void reset_esh(esh_t *info)
 {
-    ffree(info->argv);
+    free_strings(info->argv);
     info->argv = NULL;
     info->path = NULL;
     if (!info->buffer)
         free(info->arg);
     if (info->env)
         free_list(&(info->env));
-    ffree(info->environ);
+    free_strings(info->environ);
     info->environ = NULL;
-    bfree((void **)info->buffer);
+    pfree((void **)info->buffer);
     _putchar(FLUSH_BUFFER);
 }
 /**

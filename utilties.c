@@ -35,9 +35,9 @@ int _atoi(char *s)
  * Return: 0 if no numbers in string, converted number otherwise
  *        -1 on error
  */
-void print_error(hsh_t *info, char *estr)
+void print_error(esh_t *info, char *estr)
 {
-    _puts(info->hsh_name);
+    _puts(info->esh_name);
     _puts(": ");
     print_d(info->line_count);
     _puts(": ");

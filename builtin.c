@@ -9,13 +9,13 @@
  *			1 if builtin found but not successful,
  *			-2 if builtin signals exit()
  */
-int check_builtin(hsh_t *info)
+int check_builtin(esh_t *info)
 {
     int i, return_status = -1;
     builtin_t builtins[] = {
-        {"env", hsh_env},
-        {"cd", hsh_cd},
-        {"exit", hsh_exit},
+        {"env", esh_env},
+        {"cd", esh_cd},
+        {"exit", esh_exit},
         {NULL, NULL}};
 
     for (i = 0; builtins[i].type; i++)
@@ -29,13 +29,13 @@ int check_builtin(hsh_t *info)
 }
 
 /**
- * hsh_exit - exits the shell
+ * esh_exit - exits the shell
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  *  Return: exits with a given exit status
  *         (0) if info.argv[0] != "exit"
  */
-int hsh_exit(hsh_t *info)
+int esh_exit(esh_t *info)
 {
     int fmtcheck;
 
@@ -58,13 +58,13 @@ int hsh_exit(hsh_t *info)
 }
 
 /**
- * hsh_cd - changes the current directory of the process
+ * esh_cd - changes the current directory of the process
  * @info: Structure containing potential arguments. Used to maintain
  *          constant function prototype.
  *  Return: Always 0
  */
 
-int hsh_cd(hsh_t *info)
+int esh_cd(esh_t *info)
 {
     char *s, *dir, buffer[1024];
     int chdir_ret;

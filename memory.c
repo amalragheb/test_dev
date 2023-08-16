@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * ffree - frees a string of strings
+ * free_strings - frees a string of strings
  * @pp: string of strings
  */
-void ffree(char **pp)
+void free_strings(char **pp)
 {
     char **a = pp;
 
@@ -16,12 +16,12 @@ void ffree(char **pp)
 }
 
 /**
- * bfree - frees a pointer and NULLs the address
+ * pfree - frees a pointer and NULLs the address
  * @ptr: address of the pointer to free
  *
  * Return: 1 if freed, otherwise 0.
  */
-int bfree(void **ptr)
+int pfree(void **ptr)
 {
     if (ptr && *ptr)
     {
