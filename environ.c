@@ -1,10 +1,9 @@
 #include "shell.h"
 
 /**
- * esh_env - prints the current environment
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * esh_env - prints current environment
+ * @info: Structure containing potential arguments.
+ * Return: 0
  */
 int esh_env(esh_t *info)
 {
@@ -21,11 +20,11 @@ int esh_env(esh_t *info)
 }
 
 /**
- * _getenv - gets the value of an environ variable
- * @info: Structure containing potential arguments. Used to maintain
- * @name: env var name
+ * _getenv - gets value of environ variable
+ * @info: Structure containing arguments.
+ * @name: env name
  *
- * Return: the value
+ * Return: value
  */
 char *_getenv(esh_t *info, const char *name)
 {
@@ -44,10 +43,9 @@ char *_getenv(esh_t *info, const char *name)
 }
 
 /**
- * get_environ - returns the string array copy of our environ
- * @info: Structure containing potential arguments. Used to maintain
- *          constant function prototype.
- * Return: Always 0
+ * get_environ - returns string array copy of environ
+ * @info: Structure containing potential arguments.
+ * Return: 0
  */
 char **get_environ(esh_t *info)
 {
