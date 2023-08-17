@@ -8,16 +8,16 @@
  */
 int esh_env(esh_t *info)
 {
-    var_t *h = info->env;
+	var_t *h = info->env;
 
-    while (h)
-    {
-        _puts(h->str ? h->str : "(nil)");
-        _puts("\n");
-        h = h->next;
-    }
+	while (h)
+	{
+		_puts(h->str ? h->str : "(nil)");
+		_puts("\n");
+		h = h->next;
+	}
 
-    return (0);
+	return (0);
 }
 
 /**
@@ -29,17 +29,18 @@ int esh_env(esh_t *info)
  */
 char *_getenv(esh_t *info, const char *name)
 {
-    var_t *node = info->env;
-    char *p;
+	var_t *node = info->env;
+	char *p;
 
-    while (node)
-    {
-        p = starts_with(node->str, name);
-        if (p && *p)
-            return (p);
-        node = node->next;
-    }
-    return (NULL);
+	while (node)
+	{
+		p = starts_with(node->str, name);
+		if (p && *p)
+			return (p);
+		node = node->next;
+	}
+
+	return (NULL);
 }
 
 /**
@@ -50,10 +51,10 @@ char *_getenv(esh_t *info, const char *name)
  */
 char **get_environ(esh_t *info)
 {
-    if (!info->environ)
-    {
-        info->environ = list_to_strings(info->env);
-    }
+	if (!info->environ)
+	{
+		info->environ = list_to_strings(info->env);
+	}
 
-    return (info->environ);
+	return (info->environ);
 }
