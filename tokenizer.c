@@ -17,7 +17,8 @@ char **_split_str(char *ss, char *meter)
 	if (meter == NULL)
 		meter = " ";
 	for (e = 0; ss[e] != '\0'; e++)
-		if (!is_delimiter(ss[e], meter) && (is_delimiter(ss[e + 1], meter) || !ss[e + 1]))
+		if (!is_delimiter(ss[e], meter) &&
+				(is_delimiter(ss[e + 1], meter) || !ss[e + 1]))
 			nowrz++;
 
 	if (nowrz == 0)

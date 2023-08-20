@@ -52,6 +52,6 @@ void reset_esh(esh_t *info)
 void prompt(void)
 {
 	if (isatty(STDIN_FILENO))
-			_puts("$ ");
+		_puts("$ ");
 	_putchar(FLUSH_BUFFER);
 }

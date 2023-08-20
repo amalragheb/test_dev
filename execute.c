@@ -13,54 +13,39 @@ void execute_command(esh_t *info)
 
 	info->path = info->argv[0];
 	if (info->flag == 1)
-	{
 		info->line_count++;
 		info->flag = 0;
-	}
 
 	for (i = 0, k = 0; info->arg[i]; i++)
 		if (!is_delimiter(info->arg[i], " \t\n"))
-		k++;
+			k++;
 	if (!k)
 		return;
 	path = find_path(_getenv(info, "PATH="), info->argv[0]);
 	if (path)
-	{
 		info->path = path;
-	}
 
 	child_pid = fork();
 	if (child_pid == -1)
-	{
 		perror("Error:");
 		return;
-	}
 	if (child_pid == 0)
-	{
 		if (execve(info->path, info->argv, get_environ(info)) == -1)
-		{
 			reset_esh(info);
 			if (errno == EACCES)
 				exit(126);
 			exit(1);
-		}
-	}
 	else
-	{
 		wait(&(info->status));
 		if (WIFEXITED(info->status))
-		{
 			info->status = WEXITSTATUS(info->status);
 			if (info->status == 126)
 				print_error(info, "Permission denied\n");
-		}
-	}
 }
 
 /**
  * is_executable - find if file is an executable command
  * @path: the path to a file
- *
  * Return: 1 if true, 0 otherwise
  */
 int is_executable(char *path)
@@ -69,11 +54,8 @@ int is_executable(char *path)
 
 	if (!path || stat(path, &st))
 		return (0);
-
 	if (st.st_mode & S_IFREG)
-	{
 		return (1);
-	}
 
 	return (0);
 }
@@ -82,7 +64,6 @@ int is_executable(char *path)
  * find_path - finds this command in the PATH
  * @pathstr: string PATH
  * @cmd: the cmd
- *
  * Return: full path of cmd  or NULL
  */
 char *find_path(char *pathstr, char *cmd)
@@ -93,10 +74,8 @@ char *find_path(char *pathstr, char *cmd)
 	if (!pathstr)
 		return (NULL);
 	if ((_strlen(cmd) > 2) && starts_with(cmd, "./"))
-	{
 		if (is_executable(cmd))
 			return (cmd);
-	}
 	while (1)
 	{
 		if (!pathstr[i] || pathstr[i] == ':')
