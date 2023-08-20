@@ -20,17 +20,17 @@ int _strlen(char *s)
 
 /**
  * starts_with - checks if needle starts with haystack
- * @haystack: string to search
- * @needle: the substring to find
+ * @str: string to search
+ * @c: the substring to find
  *
  * Return: address of next char of haystack or NULL
  */
-char *starts_with(const char *haystack, const char *needle)
+char *starts_with(const char *str, const char *c)
 {
-	while (*needle)
-		if (*needle++ != *haystack++)
+	while (*c)
+		if (*c++ != *str++)
 			return (NULL);
-	return ((char *)haystack);
+	return ((char *)str);
 }
 
 /**

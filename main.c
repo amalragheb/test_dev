@@ -9,7 +9,7 @@
  */
 int main(__attribute__((unused)) int ac, char **av)
 {
-	esh_t info[] = {{ NULL, NULL, 0, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, 0 }};
+	esh_t data[] = {{NULL, NULL, 0, NULL, NULL, NULL, 0, 0, 0, NULL, NULL, 0}};
 	ssize_t r = 0;
 	int builtin_ret = 0;
 	var_t *node = NULL;
@@ -17,31 +17,31 @@ int main(__attribute__((unused)) int ac, char **av)
 
 	for (i = 0; environ[i]; i++)
 		add_node_end(&node, environ[i], 0);
-	info->env = node;
+	data->env = node;
 
 	while (r != -1 && builtin_ret != -2)
 	{
 		prompt();
-		r = read_line(info);
+		r = read_line(data);
 		if (r != -1)
 		{
-			init_esh(info, av);
-			builtin_ret = check_builtin(info);
+			init_esh(data, av);
+			builtin_ret = check_builtin(data);
 			if (builtin_ret == -1)
-				execute_command(info);
+				execute_command(data);
 		}
-		free_strings(info->argv);
-		info->argv = NULL;
-		info->path = NULL;
+		free_strings(data->argv);
+		data->argv = NULL;
+		data->path = NULL;
 	}
-	reset_esh(info);
-	if (!isatty(STDIN_FILENO) && info->status)
-		exit(info->status);
+	reset_esh(data);
+	if (!isatty(STDIN_FILENO) && data->status)
+		exit(data->status);
 	if (builtin_ret == -2)
 	{
-		if (info->err_num == -1)
-			exit(info->status);
-		exit(info->err_num);
+		if (data->err_num == -1)
+			exit(data->status);
+		exit(data->err_num);
 	}
 	return (EXIT_SUCCESS);
 }

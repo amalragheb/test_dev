@@ -29,28 +29,28 @@ int _atoi(char *s)
 
 /**
  * print_error - print error message
- * @info: parameter and return info struct
+ * @data: parameter and return info struct
  * @estr: string contain error type
  * Return: 0 if no numbers in string or -1 on error or converted number
  */
-void print_error(esh_t *info, char *estr)
+void print_error(esh_t *data, char *estr)
 {
-	_puts(info->esh_name);
+	_puts(data->esh_name);
 	_puts(": ");
-	print_d(info->line_count);
+	print_decimal(data->line_count);
 	_puts(": ");
-	_puts(info->argv[0]);
+	_puts(data->argv[0]);
 	_puts(": ");
 	_puts(estr);
 }
 
 /**
- * print_d - function prints base 10 numbers
+ * print_decimal - function prints base 10 numbers
  * @input: input
  *
  * Return: the number of characters that be printed
  */
-int print_d(int input)
+int print_decimal(int input)
 {
 	int (*__putchar)(char) = _putchar;
 	int i, count = 0;
@@ -81,7 +81,7 @@ int print_d(int input)
 }
 
 /**
- * convert_number - converter function use in atio function
+ * convert_number - converter function use in atoi function
  * @num: number
  * @base: base
  *
@@ -116,18 +116,17 @@ char *convert_number(long int num, int base)
 
 /**
  * remove_comments - replaces first instance of '#' with '\0'
- * @buf: address of the string
- *
+ * @str: address of the string
  * Return: 0;
  */
-void remove_comments(char *buf)
+void remove_comments(char *str)
 {
 	int i;
 
-	for (i = 0; buf[i] != '\0'; i++)
-		if (buf[i] == '#' && (!i || buf[i - 1] == ' '))
+	for (i = 0; str[i] != '\0'; i++)
+		if (str[i] == '#' && (!i || str[i - 1] == ' '))
 		{
-			buf[i] = '\0';
+			str[i] = '\0';
 			break;
 		}
 }

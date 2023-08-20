@@ -16,12 +16,12 @@ void free_strings(char **pp)
 }
 
 /**
- * pfree - frees pointer
+ * safely_free_pointer - Frees memory allocated for a pointer
  * @ptr: address of pointer to be free
  *
  * Return: 1 if freed, or 0.
  */
-int pfree(void **ptr)
+int safely_free_pointer(void **ptr)
 {
 	if (ptr && *ptr)
 	{
@@ -33,12 +33,12 @@ int pfree(void **ptr)
 }
 
 /**
- * free_list - frees all nodes in the  list
+ * free_var_list - frees all nodes in the  list
  * @head_ptr: address of pointer to head node
  *
  * Return: void
  */
-void free_list(var_t **head_ptr)
+void free_var_list(var_t **head_ptr)
 {
 	var_t *node, *next_node, *head;
 

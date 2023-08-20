@@ -1,5 +1,5 @@
-#ifndef _SHELL_H_
-#define _SHELL_H_
+#ifndef SHELL_H
+#define SHELL_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +12,6 @@
 #include <fcntl.h>
 #include <errno.h>
 
-/* for read/write buffers */
 #define BUFFER_SIZE 1024
 #define FLUSH_BUFFER -1
 
@@ -32,8 +31,7 @@ typedef struct var_list
 } var_t;
 
 /**
- * struct esh_data - contains pseudo-arguments to pass into a function,
- *		allowing uniform prototype for function pointer struct
+ * struct esh_data - information data about esh data structure
  *@esh_name: shell filename
  *@buffer: the address of pointer to buffer
  *@buffer_type: print ||, && ;
@@ -64,7 +62,7 @@ typedef struct esh_data
 } esh_t;
 
 /**
- *struct builtin - contains a builtin commands  and function
+ *struct builtin - contains a custom builtin command
  *@type: the builtin command
  *@func: builtin function
  */
@@ -74,14 +72,9 @@ typedef struct builtin
 	int (*func)(esh_t *);
 } builtin_t;
 
-
 int check_builtin(esh_t *);
 void execute_command(esh_t *);
-
-int is_executable(char *);
 char *dup_chars(char *, int, int);
-char *find_path(char *, char *);
-
 int _strlen(char *);
 char *starts_with(const char *, const char *);
 char *_strcat(char *, char *);
@@ -90,54 +83,33 @@ char *_strdup(const char *);
 int _strcmp(char *, char *);
 void _puts(char *);
 int _putchar(char);
-
 char *_strchr(char *, char);
-
-/* toem_tokenizer.c */
-/*char **strtow(char *, char *)*/
 char **_split_str(char *ss, char *meter);
-/*int is_delimiter(char, char *)*/
 int is_delimiter(char ch, char *dlm);
-
 void free_strings(char **);
-
-
-int pfree(void **);
-
+int safely_free_pointer(void **);
 int _atoi(char *);
 void print_error(esh_t *, char *);
-int print_d(int);
+int print_decimal(int);
 char *convert_number(long int, int);
 void remove_comments(char *);
-
 int esh_exit(esh_t *);
 int esh_cd(esh_t *);
-
 ssize_t read_line(esh_t *);
 void sigintHandler(int);
-
 void init_esh(esh_t *, char **);
 void reset_esh(esh_t *);
 void prompt(void);
-
 char *_getenv(esh_t *, const char *);
 int esh_env(esh_t *);
-
-
 char **get_environ(esh_t *);
-
 var_t *add_node_end(var_t **, const char *, int);
-void free_list(var_t **);
-
-
+void free_var_list(var_t **);
 size_t list_len(const var_t *);
 char **list_to_strings(var_t *);
 var_t *node_starts_with(var_t *, char *, char);
-
-
-int is_chain(esh_t *, char *, size_t *);
-void check_chain(esh_t *, char *, size_t *, size_t, size_t);
+int detect_chain_delimiter(esh_t *, char *, size_t *);
+void handle_chain(esh_t *, char *, size_t *, size_t, size_t);
 int replace_vars(esh_t *);
-int replace_string(char **, char *);
 
 #endif

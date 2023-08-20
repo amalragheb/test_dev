@@ -1,14 +1,14 @@
 #include "shell.h"
 
+int replace_string(char **old, char *new);
 /**
- * is_chain - test if current char in buffer is a chain delimeter
- * @info: parameter struct
+ * detect_chain_delimiter - test if current char in buffer is a chain delimeter
+ * @data: parameter struct
  * @buf: char buffer
  * @p: address of current position in buf
- *
  * Return: 1 if chain delimeter or 0
  */
-int is_chain(esh_t *info, char *buf, size_t *p)
+int detect_chain_delimiter(esh_t *data, char *buf, size_t *p)
 {
 	size_t j = *p;
 
@@ -16,18 +16,18 @@ int is_chain(esh_t *info, char *buf, size_t *p)
 	{
 		buf[j] = 0;
 		j++;
-		info->buffer_type = 1;
+		data->buffer_type = 1;
 	}
 	else if (buf[j] == '&' && buf[j + 1] == '&')
 	{
 		buf[j] = 0;
 		j++;
-		info->buffer_type = 2;
+		data->buffer_type = 2;
 	}
-	else if (buf[j] == ';') /* found end of this command */
+	else if (buf[j] == ';')
 	{
-		buf[j] = 0; /* replace semicolon with null */
-		info->buffer_type = 3;
+		buf[j] = 0;
+		data->buffer_type = 3;
 	}
 	else
 		return (0);
@@ -36,30 +36,29 @@ int is_chain(esh_t *info, char *buf, size_t *p)
 }
 
 /**
- * check_chain - checks if continue chaining based on last status
- * @info: parameter struct
+ * handle_chain - checks if continue chaining based on last status
+ * @data: parameter struct
  * @buf: char buffer
  * @p: address of current position in buf
  * @i: starting position in buf
  * @len: length of buf
- *
  * Return: Void
  */
-void check_chain(esh_t *info, char *buf, size_t *p, size_t i, size_t len)
+void handle_chain(esh_t *data, char *buf, size_t *p, size_t i, size_t len)
 {
 	size_t j = *p;
 
-	if (info->buffer_type == 2)
+	if (data->buffer_type == 2)
 	{
-		if (info->status)
+		if (data->status)
 		{
 			buf[i] = 0;
 			j = len;
 		}
 	}
-	if (info->buffer_type == 1)
+	if (data->buffer_type == 1)
 	{
-		if (!info->status)
+		if (!data->status)
 		{
 			buf[i] = 0;
 			j = len;
@@ -71,38 +70,37 @@ void check_chain(esh_t *info, char *buf, size_t *p, size_t i, size_t len)
 
 /**
  * replace_vars - replacing vars in tokenized string
- * @info: struct parameter
- *
+ * @data: struct parameter
  * Return: 1 if replaced or 0
  */
-int replace_vars(esh_t *info)
+int replace_vars(esh_t *data)
 {
 	int i = 0;
 	var_t *node;
 
-	for (i = 0; info->argv[i]; i++)
+	for (i = 0; data->argv[i]; i++)
 	{
-		if (info->argv[i][0] != '$' || !info->argv[i][1])
+		if (data->argv[i][0] != '$' || !data->argv[i][1])
 			continue;
 
-		if (!_strcmp(info->argv[i], "$?"))
+		if (!_strcmp(data->argv[i], "$?"))
 		{
-			replace_string(&(info->argv[i]),
-					_strdup(convert_number(info->status, 10)));
+			replace_string(&(data->argv[i]),
+					_strdup(convert_number(data->status, 10)));
 			continue;
 		}
-		if (!_strcmp(info->argv[i], "$$"))
+		if (!_strcmp(data->argv[i], "$$"))
 		{
-			replace_string(&(info->argv[i]), _strdup(convert_number(getpid(), 10)));
+			replace_string(&(data->argv[i]), _strdup(convert_number(getpid(), 10)));
 			continue;
 		}
-		node = node_starts_with(info->env, &info->argv[i][1], '=');
+		node = node_starts_with(data->env, &data->argv[i][1], '=');
 		if (node)
 		{
-			replace_string(&(info->argv[i]), _strdup(_strchr(node->str, '=') + 1));
+			replace_string(&(data->argv[i]), _strdup(_strchr(node->str, '=') + 1));
 			continue;
 		}
-		replace_string(&info->argv[i], _strdup(""));
+		replace_string(&data->argv[i], _strdup(""));
 	}
 	return (0);
 }
@@ -111,7 +109,6 @@ int replace_vars(esh_t *info)
  * replace_string - function for replacing string
  * @old: old string address
  * @new: new string
- *
  * Return: 1 if replaced or 0
  */
 int replace_string(char **old, char *new)

@@ -2,12 +2,12 @@
 
 /**
  * esh_env - prints current environment
- * @info: Structure containing potential arguments.
+ * @data: Structure containing potential arguments.
  * Return: 0
  */
-int esh_env(esh_t *info)
+int esh_env(esh_t *data)
 {
-	var_t *h = info->env;
+	var_t *h = data->env;
 
 	while (h)
 	{
@@ -21,14 +21,14 @@ int esh_env(esh_t *info)
 
 /**
  * _getenv - gets value of environ variable
- * @info: Structure containing arguments.
+ * @data: Structure containing arguments.
  * @name: env name
  *
  * Return: value
  */
-char *_getenv(esh_t *info, const char *name)
+char *_getenv(esh_t *data, const char *name)
 {
-	var_t *node = info->env;
+	var_t *node = data->env;
 	char *p;
 
 	while (node)
@@ -44,15 +44,13 @@ char *_getenv(esh_t *info, const char *name)
 
 /**
  * get_environ - returns string array copy of environ
- * @info: Structure containing potential arguments.
+ * @data: Structure containing potential arguments.
  * Return: 0
  */
-char **get_environ(esh_t *info)
+char **get_environ(esh_t *data)
 {
-	if (!info->environ)
-	{
-		info->environ = list_to_strings(info->env);
-	}
+	if (!data->environ)
+		data->environ = list_to_strings(data->env);
 
-	return (info->environ);
+	return (data->environ);
 }
